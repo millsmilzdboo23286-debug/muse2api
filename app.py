@@ -2336,6 +2336,16 @@ def admin_page():
     return _admin_html()
 
 
+@app.get("/web", response_class=HTMLResponse)
+def web_page():
+    p = os.path.join(BASE_DIR, "web.html")
+    try:
+        with open(p, encoding="utf-8") as f:
+            return f.read()
+    except OSError:
+        raise HTTPException(404, "Web 页面文件缺失")
+
+
 
 # ------------------------- 账号自动保活与静默续期 -------------------------
 KEEPALIVE_LOCK = asyncio.Lock()
