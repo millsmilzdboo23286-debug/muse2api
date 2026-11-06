@@ -35,7 +35,7 @@ COPY tools/ ./tools/
 # 创建持久化数据目录
 RUN mkdir -p /app/data/media /app/data/downloads /root/muse2api-profiles
 
-VOLUME ["/app/data"]
+# Railway mounts /app/data using a persistent volume.
 
 EXPOSE 18610
 
